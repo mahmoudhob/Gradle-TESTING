@@ -14,6 +14,6 @@ public class DiscountServiceTest {
     @Test
     public void testApplyDiscountTooLow() {
         DiscountService service = new DiscountService();
-        assertEquals(85, service.applyDiscount(90)); // falsch: sollte 90 bleiben
+        assertEquals(90, service.applyDiscount(90)); // falsch: sollte 90 bleiben
     }
 }
