@@ -1,29 +1,18 @@
 plugins {
-    id 'java-library' // oder 'java', 'application' etc.
-    id 'maven-publish' // <-- Wichtig: Dieses Plugin hinzufügen
+    id 'java'
 }
 
-group = 'com.yourcompany' // Dein Gruppennamen
-version = '1.0.0' // Deine Version
+group 'de.demo'
+version '1.0'
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = project.group
-            artifactId = 'discount-gradle' // Dein Artefaktname
-            version = project.version
+repositories {
+    mavenCentral()
+}
 
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/${owner}/${repo}") // Besitzer und Repo-Name anpassen
-            credentials {
-                username = System.getenv("USERNAME") // ${{ github.actor }} im Workflow
-                password = System.getenv("TOKEN")    // ${{ secrets.GITHUB_TOKEN }} im Workflow
-            }
-        }
-    }
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+}
+
+test {
+    useJUnitPlatform()
 }
