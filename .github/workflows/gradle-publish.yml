@@ -8,8 +8,13 @@
 name: Gradle Package
 
 on:
-  release:
+  push: # <-- Hier ist der wichtige Wechsel
+    branches:
+      - main # Oder 'master', je nachdem wie dein Hauptbranch heißt
+  release: # Du kannst beides behalten, wenn du auch bei Releases starten willst
     types: [created]
+
+
 
 jobs:
   build:
